@@ -93,6 +93,15 @@ class LinkedList
         numNodes--;
     }
 
+    public void printList() {
+        Node temp = head;
+        while(temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null (count : " + numNodes + ")");
+    }
+
     private Node getPrevious(int index) {
         /**
          * Erica -> Ari -> Ana -> Ricky -> NULL
@@ -129,7 +138,17 @@ class LinkedList
 
     public String toString()
     {
-        throw new UnsupportedOperationException("Not implemented");
+        Node temp = head;
+        String str = "";
+        while(temp != null) {
+            str += "" + temp.data;
+            if (temp.next != null) str += " => ";
+            temp = temp.next;
+        }
+        return str;
+
+        // return head.toString();
+        // throw new UnsupportedOperationException("Not implemented");
     }
 
     public int getSize()
@@ -155,6 +174,10 @@ class LinkedList
         public Object getData()
         {
             return data;
+        }
+
+        public String toString() {
+            return data.toString();
         }
     }
 }

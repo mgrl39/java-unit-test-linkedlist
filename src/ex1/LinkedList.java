@@ -20,12 +20,25 @@ Copyright (C) 2011 netherwolfe
 ============================================================================*/
 //Source: https://gist.github.com/es20641/1208340/06d598126d53b048058bc243cbc4e4dd7db9a23a
 
+/**
+ * El constructor de la clase tiene el mismo nombre que la clase.
+ * Si en el contructor LinkedList pone diferentes variables dentro de los parentesis. Esos son los argumentos
+ * que al hacer el LinkedList a = new LinkedList te piden.
+ *
+ * Entonces, en este caso se pide un Object, que podemos poner Strings o numeros si queremos...
+ *
+ * HACER UN new LinkedList ==> Instancia
+ */
 class LinkedList
 {
     //Class variables for the Linked List
     private Node head;
     private int numNodes;
 
+    /**
+     * cuando se crea una instancia de Linkedlist (LinkedList instancia = new LinkedList("HOLA");)
+     * se crea un nodo y la cuenta es 1.
+     */
     public LinkedList(Object dat)
     {
         head = new Node(dat);
@@ -81,6 +94,21 @@ class LinkedList
     }
 
     private Node getPrevious(int index) {
+        /**
+         * Erica -> Ari -> Ana -> Ricky -> NULL
+         * 0 -> 1 -> 2 -> 3
+         *
+         * En el index, no vas a poner 0. Vas a poner 1.
+         *
+         * Sabiendo eso, restaremos: -1
+         * Si queremos buscar la tercera, es 3 - 1 ==> 2
+         *
+         * Entonces, para llegar hasta la anterior de Ana, que es la Ari.
+         * Lo que hay que hacer es decirle al codigo. Oye, hay dos condiciones:
+         *     - Recorre mientras la posicion actual NO SEA LA ANTERIOR
+         *     - Que el next NO sea NULL, si el sigueinte es null significa que estamos en el ultimo por lo tanto
+         *          devolvemos el actual.
+         */
         Node temp = head;
         for(int i=0; i< index - 1 && temp.next != null; i++)
         {
@@ -115,6 +143,10 @@ class LinkedList
         private Node next;
         private Object data;
 
+        /**
+         * Constructor para crear instancias.
+         * @param dat
+         */
         public Node(Object dat)
         {
             data = dat;
